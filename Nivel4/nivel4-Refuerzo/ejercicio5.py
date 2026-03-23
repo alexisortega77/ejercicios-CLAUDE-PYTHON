@@ -14,3 +14,21 @@ Longitud 6: ['lindos'] → 1 palabra
 💡 Tip: recorre las palabras, usa len(palabra) como clave del diccionario y agrega la palabra a la lista de ese largo. 
 Si la clave no existe aún, inicialízala con [].
 """
+texto = "el gato y el perro son muy lindos"
+palabras = texto.split()
+grupos = {}
+
+palabras=texto.split() # "el", "gato", "y", ""el
+grupo={}
+for palabra in palabras:
+    longitud=len(palabra) #?
+    print(longitud) #devuelve el numero de letras en la palabra
+    if longitud not in grupo:
+        grupo[longitud]=[]
+    
+    grupo[longitud]=[palabra]
+
+ 
+ 
+for longitud in sorted(grupo):
+    print(f"longitud {longitud}: {grupo[longitud]}")

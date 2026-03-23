@@ -96,13 +96,20 @@ Palabra más corta:  es (2 letras)
 Longitud promedio:  5.71 letras
 ```
 """
-texto_longitud="Python es un lenguaje de programacion"
-texto_longitud=texto_longitud.lower().split()
+texto = "Python es un lenguaje de programacion"
+palabras = texto.lower().split()
 
-for longitud in texto_longitud:
-    cantidad_texto=longitud.split()
-    print(cantidad_texto)
+# palabra más larga y corta
+mas_larga = max(palabras, key=len)
+mas_corta = min(palabras, key=len)
 
+# promedio
+total_letras = sum(len(p) for p in palabras)
+promedio = total_letras / len(palabras)
+
+print("Palabra más larga:", mas_larga, f"({len(mas_larga)} letras)")
+print("Palabra más corta:", mas_corta, f"({len(mas_corta)} letras)")
+print("Longitud promedio:", round(promedio, 2), "letras")
 
 """
 ---
@@ -120,7 +127,22 @@ Texto: "el gato y el perro son muy lindos"
 6 letras: ['lindos']
 ```
 """
+texto = "el gato y el perro son muy lindos"
+palabras = texto.split()
 
+grupos = {}
+
+for palabra in palabras:
+    longitud = len(palabra)
+    
+    if longitud not in grupos:
+        grupos[longitud] = []
+    
+    grupos[longitud].append(palabra)
+
+# mostrar ordenado
+for longitud in sorted(grupos):
+    print(f"{longitud} letras: {grupos[longitud]}")
 
 """
 ---
@@ -137,3 +159,19 @@ Top 3 palabras más frecuentes:
 
 💡 Tip: después de ordenar usa [:3] para tomar solo los primeros 3 elementos de la lista.
 """
+texto = "el gato y el perro y el gato duerme y el perro juega"
+palabras = texto.split()
+
+frecuencia = {}
+
+for palabra in palabras:
+    frecuencia[palabra] = frecuencia.get(palabra, 0) + 1
+
+# ordenar por frecuencia (de mayor a menor)
+ordenado = sorted(frecuencia.items(), key=lambda x: x[1], reverse=True)
+
+top3 = ordenado[:3]
+
+print("Top 3 palabras más frecuentes:")
+for i, (palabra, veces) in enumerate(top3, 1):
+    print(f"{i}. {palabra} → {veces} veces")

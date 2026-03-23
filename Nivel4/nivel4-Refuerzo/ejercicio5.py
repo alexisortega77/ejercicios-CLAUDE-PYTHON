@@ -14,21 +14,48 @@ Longitud 6: ['lindos'] → 1 palabra
 💡 Tip: recorre las palabras, usa len(palabra) como clave del diccionario y agrega la palabra a la lista de ese largo. 
 Si la clave no existe aún, inicialízala con [].
 """
-texto = "el gato y el perro son muy lindos"
+texto    = "el gato y el perro son animales muy lindos"
 palabras = texto.split()
-grupos = {}
+grupo    = {}
 
-palabras=texto.split() # "el", "gato", "y", ""el
-grupo={}
 for palabra in palabras:
-    longitud=len(palabra) #?
-    print(longitud) #devuelve el numero de letras en la palabra
+    longitud = len(palabra)
     if longitud not in grupo:
-        grupo[longitud]=[]
-    
-    grupo[longitud]=[palabra]
+        grupo[longitud] = []
+    grupo[longitud].append(palabra)    # ← append, no =
 
- 
- 
 for longitud in sorted(grupo):
-    print(f"longitud {longitud}: {grupo[longitud]}")
+    cantidad = len(grupo[longitud])
+    plural   = "palabra" if cantidad == 1 else "palabras"
+    print(f"Longitud {longitud}: {grupo[longitud]} → {cantidad} {plural}")
+
+   
+   # Solución óptima — con setdefault():
+texto    = "el gato y el perro son animales muy lindos"
+palabras = texto.split()
+grupo    = {}
+
+for palabra in palabras:
+    grupo.setdefault(len(palabra), []).append(palabra)
+    # setdefault devuelve la lista si ya existe, o crea [] si no existe
+    # luego append agrega la palabra — todo en una línea
+
+for longitud, palabras_grupo in sorted(grupo.items()):
+    cantidad = len(palabras_grupo)
+    plural   = "palabra" if cantidad == 1 else "palabras"
+    print(f"Longitud {longitud}: {palabras_grupo} → {cantidad} {plural}")
+
+"""
+¿Cómo funciona setdefault(clave, default)?
+pythongrupo = {}
+
+# Sin setdefault — dos pasos
+if longitud not in grupo:
+    grupo[longitud] = []
+grupo[longitud].append(palabra)
+
+# Con setdefault — un paso
+grupo.setdefault(longitud, []).append(palabra)
+# Si longitud no existe → crea [] y lo devuelve → append agrega
+# Si longitud ya existe → devuelve la lista existente → append agrega
+    """

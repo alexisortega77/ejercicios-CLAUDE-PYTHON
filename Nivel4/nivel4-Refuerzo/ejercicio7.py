@@ -29,7 +29,7 @@ def mostrar_disponible(valor):
 
 def agregar_libro(biblioteca):
   
-        nombre_libro=input("Ingresa nombre de libro:").lower().strip() 
+        nombre_libro=input("Ingresa nombre de libro: ").lower().strip() 
         nombre_autor=input("Ingrese nombre del autor: ").lower().strip() 
         disponible=True
         biblioteca[nombre_libro] = {"autor": nombre_autor, "disponible": disponible}

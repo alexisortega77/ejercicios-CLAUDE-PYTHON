@@ -20,35 +20,30 @@ Mayor gasto:     $1200 (2026-01-05)
 
 💡 Tip: filtra las transacciones por tipo con list comprehension, luego usa max() con key=lambda x: x["monto"] para encontrar la mayor.
 """
-pythontransacciones = [
-    {"fecha": "2026-01-01", "tipo": "ingreso",  "monto": 5000},
-    {"fecha": "2026-01-05", "tipo": "gasto",    "monto": 1200},
-    {"fecha": "2026-01-10", "tipo": "ingreso",  "monto": 3000},
-    {"fecha": "2026-01-15", "tipo": "gasto",    "monto": 800},
-    {"fecha": "2026-01-20", "tipo": "ingreso",  "monto": 2000},
-    {"fecha": "2026-01-25", "tipo": "gasto",    "monto": 500},
+transacciones = [
+    {"fecha": "2026-01-01", "tipo": "ingreso", "monto": 5000},
+    {"fecha": "2026-01-05", "tipo": "gasto",   "monto": 1200},
+    {"fecha": "2026-01-10", "tipo": "ingreso", "monto": 3000},
+    {"fecha": "2026-01-15", "tipo": "gasto",   "monto": 800},
+    {"fecha": "2026-01-20", "tipo": "ingreso", "monto": 2000},
+    {"fecha": "2026-01-25", "tipo": "gasto",   "monto": 500},
 ]
 
-def reporte_financiero(pythontransacciones):
-    total_ingresos=0
-    total_gastos=0
-    for transacciones in pythontransacciones:
-        if transacciones["tipo"]=="ingreso":
-            total_ingresos+=transacciones["monto"]
-        else:
-            total_gastos+=transacciones["monto"]
-    ingreso=[t for t in pythontransacciones if t["tipo"]=="ingreso"]
-    gasto=[t for t in pythontransacciones if t["tipo"]=="gasto"]
-    mayor_ingreso=max(ingreso, key=lambda x:x["monto"])
-    mayor_gasto=min(gasto, key=lambda x:x["monto"])
+def reporte_financiero(transacciones):
+    ingresos = [t for t in transacciones if t["tipo"] == "ingreso"]
+    gastos   = [t for t in transacciones if t["tipo"] == "gasto"]
 
-    balance=total_ingresos-total_gastos
+    total_ingresos = sum(t["monto"] for t in ingresos)
+    total_gastos   = sum(t["monto"] for t in gastos)
+    balance        = total_ingresos - total_gastos
 
-    print(f"Total ingresos:  ${total_ingresos}")
-    print(f"Total gastos:    ${total_gastos}")
-    print(f"Balance final:   ${balance}")
-    print(f"Mayor ingreso:   ${mayor_ingreso['monto']} ({mayor_ingreso['fecha']})")
-    print(f"Mayor gasto:     ${mayor_gasto['monto']} ({mayor_gasto['fecha']})")
+    mayor_ingreso  = max(ingresos, key=lambda x: x["monto"])
+    mayor_gasto    = max(gastos,   key=lambda x: x["monto"])
 
+    print(f"Total ingresos: ${total_ingresos}")
+    print(f"Total gastos:   ${total_gastos}")
+    print(f"Balance final:  ${balance}")
+    print(f"Mayor ingreso:  ${mayor_ingreso['monto']} ({mayor_ingreso['fecha']})")
+    print(f"Mayor gasto:    ${mayor_gasto['monto']} ({mayor_gasto['fecha']})")
 
-reporte_financiero(pythontransacciones)
+reporte_financiero(transacciones)

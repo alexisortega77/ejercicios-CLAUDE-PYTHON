@@ -12,8 +12,8 @@
 # Módulo:           3
 # Potencia:         50625
 
-num1=int(input("Ingresa un numero"))
-num2=int(input("Ingresa un numero"))
+num1=int(input("Ingresa un numero: "))
+num2=int(input("Ingresa un numero: "))
 print(f"Suma: {num1+num2}")
 print(f"Resta: {num1-num2}")
 print(f"Multiplicacion: {num1*num2}")

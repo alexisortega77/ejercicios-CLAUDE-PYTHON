@@ -19,7 +19,7 @@ empate=0
 ronda=3
 opciones_pc=["piedra", "papel", "tijera"]
 for i in range(1,ronda+1):
-    eleccion=input("elige que usaras")
+    eleccion=input("elige que usaras: ").lower()
     pc = opciones_pc[i % 3]
 
     if eleccion==pc:

@@ -22,3 +22,33 @@
 #
 # Pista año bisiesto: divisible entre 4, excepto siglos
 # a menos que sean divisibles entre 400.
+
+def is_leap(year):
+    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+
+def day_on_month(month, year):
+    days = {1:31, 2:28, 3:31, 4:30, 5:31, 6:30,
+            7:31, 8:31, 9:30, 10:31, 11:30, 12:31}
+    # Febrero especial
+    if month == 2 and is_leap(year):
+        return 29
+    return days[month]
+
+def validate_date(day, month, year):
+    if not 1 <= month <= 12:
+        return False
+    return 1 <= day <= day_on_month(month, year)
+   
+print(is_leap(2024))   
+print(is_leap(2023))   
+print(is_leap(1900))   
+print(is_leap(2000))   
+
+print(day_on_month(2,2024))   
+print(day_on_month(2,2023))   
+print(day_on_month(4,2024))   
+
+print(validate_date(29,2,2024))   
+print(validate_date(29,2,2023))   
+print(validate_date(31,4,2024))  
+print(validate_date(15,6,2024))    

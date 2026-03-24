@@ -14,4 +14,4 @@ for i in range(1,101):
         contador+=1
 
 
-print("\ntotal de multiplos de 7: ",contador)
+print("\ntotal de multiplos de 7 entre 1 y 100: ",contador)

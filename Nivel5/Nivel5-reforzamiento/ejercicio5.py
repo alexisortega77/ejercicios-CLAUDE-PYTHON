@@ -1,6 +1,8 @@
 """
 Ejercicio 5 — Medio
-Crea una clase TodoList para gestionar tareas. Cada tarea tiene título, prioridad (1-3) y completada (False por defecto). Métodos: add_task(), complete_task(), pending(), by_priority() y __str__.
+Crea una clase TodoList para gestionar tareas. 
+Cada tarea tiene título, prioridad (1-3) y completada (False por defecto). 
+Métodos: add_task(), complete_task(), pending(), by_priority() y __str__.
 todo = TodoList()
 todo.add_task("Estudiar Python", 1)
 todo.add_task("Hacer ejercicio", 2)

@@ -1,0 +1,16 @@
+{
+    "owner": "Manuel",
+    "balance": 1300,
+    "history": [
+        {
+            "type": "deposit",
+            "amount": 500,
+            "date": "2026-04-12 01:34:55"
+        },
+        {
+            "type": "withdrawal",
+            "amount": 200,
+            "date": "2026-04-12 01:34:55"
+        }
+    ]
+}

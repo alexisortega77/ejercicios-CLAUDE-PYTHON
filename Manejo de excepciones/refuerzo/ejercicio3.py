@@ -22,5 +22,5 @@ def read_positive_number(prompt):
             print("Error: must be a valid number.")
 
      
-         
+        
 read_positive_number("Enter a number: ")

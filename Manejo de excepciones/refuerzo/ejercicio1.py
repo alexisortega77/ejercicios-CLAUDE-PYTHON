@@ -17,6 +17,7 @@ def safe_int(value):
             return int(float(value))
         except (ValueError, TypeError):
             return None
+        
 print(safe_int("3.14")) 
 print(safe_int("hello"))
 print(safe_int(True))

@@ -1,0 +1,10 @@
+Total employees: 8
+Average salary:  $23250.00
+
+By department:
+  Sistemas: 3 employees | Avg: $27333.33
+  Ventas: 3 employees | Avg: $21000.00
+  RRHH: 2 employees | Avg: $20500.00
+
+Highest paid: Alexis (Sistemas) - $30000
+Lowest paid:  Luis (Ventas) - $18000

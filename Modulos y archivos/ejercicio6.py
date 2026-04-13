@@ -12,3 +12,44 @@ log("INFO",  "User Manuel logged in")
 
 💡 Usa modo "a" para agregar sin borrar. Usa datetime.now().strftime() para el timestamp.
 """
+from datetime import datetime
+
+VALID_LEVELS = {"DEBUG", "INFO", "WARNING", "ERROR"}
+
+def log(level, message, filename="app.log"):
+    level = level.upper()
+    if level not in VALID_LEVELS:
+        raise ValueError(f"Invalid level '{level}'. Use: {VALID_LEVELS}")
+
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    entry     = f"[{timestamp}] {level:<7} - {message}\n"
+
+    with open(filename, "a") as f:
+        f.write(entry)
+
+    print(entry, end="")
+
+def read_logs(filename="app.log", level=None):
+    try:
+        with open(filename, "r") as f:
+            lines = f.readlines()
+        if level:
+            lines = [l for l in lines if level.upper() in l]
+        return lines
+    except FileNotFoundError:
+        return []
+
+def clear_logs(filename="app.log"):
+    with open(filename, "w") as f:
+        f.write("")
+    print(f"Logs cleared.")
+
+
+log("INFO",    "Application started")
+log("ERROR",   "Database connection failed")
+log("WARNING", "High memory usage")
+log("INFO",    "User Manuel logged in")
+
+print("\n--- ERROR logs only ---")
+for line in read_logs(level="ERROR"):
+    print(line, end="")

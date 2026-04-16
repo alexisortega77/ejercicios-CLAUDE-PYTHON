@@ -1,0 +1,30 @@
+[
+    {
+        "date": "2026-04-15",
+        "type": "income",
+        "category": "Salary",
+        "amount": 15000,
+        "description": "Monthly salary"
+    },
+    {
+        "date": "2026-04-15",
+        "type": "expense",
+        "category": "Food",
+        "amount": 500,
+        "description": "Supermarket"
+    },
+    {
+        "date": "2026-04-15",
+        "type": "expense",
+        "category": "Transport",
+        "amount": 150,
+        "description": "Gas"
+    },
+    {
+        "date": "2026-04-15",
+        "type": "expense",
+        "category": "Entertainment",
+        "amount": 800,
+        "description": "Concert"
+    }
+]

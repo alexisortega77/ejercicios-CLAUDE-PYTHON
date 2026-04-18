@@ -1,30 +1,68 @@
-[
-    {
-        "date": "2026-04-15",
-        "type": "income",
-        "category": "Salary",
-        "amount": 15000,
-        "description": "Monthly salary"
-    },
-    {
-        "date": "2026-04-15",
-        "type": "expense",
-        "category": "Food",
-        "amount": 500,
-        "description": "Supermarket"
-    },
-    {
-        "date": "2026-04-15",
-        "type": "expense",
-        "category": "Transport",
-        "amount": 150,
-        "description": "Gas"
-    },
-    {
-        "date": "2026-04-15",
-        "type": "expense",
-        "category": "Entertainment",
-        "amount": 800,
-        "description": "Concert"
+{
+    "transactions": [
+        {
+            "date": "2026-04-16",
+            "type": "income",
+            "category": "Salary",
+            "amount": 15000,
+            "description": "Monthly salary"
+        },
+        {
+            "date": "2026-04-16",
+            "type": "expense",
+            "category": "Food",
+            "amount": 500,
+            "description": "Supermarket"
+        },
+        {
+            "date": "2026-04-16",
+            "type": "expense",
+            "category": "Food",
+            "amount": 800,
+            "description": "Restaurant"
+        },
+        {
+            "date": "2026-04-16",
+            "type": "expense",
+            "category": "Transport",
+            "amount": 1200,
+            "description": "Gas"
+        },
+        {
+            "date": "2026-04-16",
+            "type": "expense",
+            "category": "Entertainment",
+            "amount": 800,
+            "description": "Concert"
+        },
+        {
+            "date": "2026-04-17",
+            "type": "income",
+            "category": "food",
+            "amount": 1200.0,
+            "description": "comer"
+        }
+    ],
+    "budgets": {
+        "Food": {
+            "category": "Food",
+            "limit": 3000,
+            "spent": 1300
+        },
+        "Transport": {
+            "category": "Transport",
+            "limit": 1500,
+            "spent": 1200
+        },
+        "Entertainment": {
+            "category": "Entertainment",
+            "limit": 500,
+            "spent": 800
+        },
+        "food": {
+            "category": "food",
+            "limit": 1200.0,
+            "spent": 0
+        }
     }
-]
+}

@@ -1,0 +1,8 @@
+date,type,category,amount,description
+2026-04-16,income,Salary,15000,Monthly salary
+2026-04-16,expense,Food,500,Supermarket
+2026-04-16,expense,Food,800,Restaurant
+2026-04-16,expense,Transport,1200,Gas
+2026-04-16,expense,Entertainment,800,Concert
+2026-04-17,income,Food,200.0,para comprar comida
+2026-04-17,expense,mantequilla,1200.0,ggs

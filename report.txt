@@ -1,10 +1,24 @@
-Total employees: 8
-Average salary:  $23250.00
+===== Personal Finance Report =====
+Generated: 2026-04-18 23:54:20
 
-By department:
-  Sistemas: 3 employees | Avg: $27333.33
-  Ventas: 3 employees | Avg: $21000.00
-  RRHH: 2 employees | Avg: $20500.00
 
-Highest paid: Alexis (Sistemas) - $30000
-Lowest paid:  Luis (Ventas) - $18000
+===== April 2026 =====
+Total income:   $ 16,200.00
+Total expenses: $  3,300.00
+Balance:        $ 12,900.00
+
+Budget status: 
+Food           | $1,300.00 / $3,000.00 (43.3%)
+Transport      | $1,200.00 / $1,500.00 (80.0%)
+Entertainment  | $  800.00 / $  500.00 (160.0%) ⚠️ OVER BUDGET
+food           | $    0.00 / $1,200.00 (0.0%)
+
+All transactions:
+  [2026-04-16] INCOME  | Salary         | $ 15,000.00 | Monthly salary
+  [2026-04-16] EXPENSE | Food           | $    500.00 | Supermarket
+  [2026-04-16] EXPENSE | Food           | $    800.00 | Restaurant
+  [2026-04-16] EXPENSE | Transport      | $  1,200.00 | Gas
+  [2026-04-16] EXPENSE | Entertainment  | $    800.00 | Concert
+  [2026-04-17] INCOME  | food           | $  1,200.00 | comer
+
+========= End of Report =========

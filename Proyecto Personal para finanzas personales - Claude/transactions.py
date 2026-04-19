@@ -116,6 +116,17 @@ class FinanceManager:
         if not alerts:
             print("  ✅ All budgets are on track.")
 
+    def spending_by_category(self):
+        current_month = datetime.now().strftime("%Y-%m")
+        monthly = [
+            t for t in self.transactions
+            if t.date.startswith(current_month) and t.type == "expense"
+        ]
+        totals = {}
+        for t in monthly:
+            totals[t.category] = totals.get(t.category, 0) + t.amount
+        return dict(sorted(totals.items(), key=lambda x: x[1], reverse=True))
+
     def monthly_summary(self):
         current_month = datetime.now().strftime("%Y-%m")
         monthly  = [t for t in self.transactions if t.date.startswith(current_month)]
@@ -132,6 +143,61 @@ class FinanceManager:
             print("\n  By category:")
             for budget in self.budgets.values():
                 print(f"    {budget}")
+        else:
+            spending = self.spending_by_category()
+            if spending:
+                print("\n  Spending by category:")
+                for category, total in spending.items():
+                    print(f"    {category:<14} | ${total:>10,.2f}")
+
+    def generate_report(self, filename="report.txt"):
+        current_month = datetime.now().strftime("%Y-%m")
+        monthly  = sorted(
+            [t for t in self.transactions if t.date.startswith(current_month)],
+            key=lambda t: t.date
+        )
+        income   = sum(t.amount for t in monthly if t.type == "income")
+        expenses = sum(t.amount for t in monthly if t.type == "expense")
+        balance  = income - expenses
+
+        lines = [
+            "===== Personal Finance Report =====",
+            f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+            "",
+            f"===== {datetime.now().strftime('%B %Y')} =====",
+            f"Total income:   ${income:>10,.2f}",
+            f"Total expenses: ${expenses:>10,.2f}",
+            f"Balance:        ${balance:>10,.2f}",
+            "",
+        ]
+
+        if self.budgets:
+            lines.append("Budget status:")
+            for budget in self.budgets.values():
+                lines.append(f"  {budget}")
+            lines.append("")
+
+        spending = self.spending_by_category()
+        if spending:
+            lines.append("Spending by category:")
+            for category, total in spending.items():
+                lines.append(f"  {category:<14} | ${total:>10,.2f}")
+            lines.append("")
+
+        if monthly:
+            lines.append("All transactions:")
+            for t in monthly:
+                lines.append(f"  {t}")
+        else:
+            lines.append(f"No transactions for {current_month}.")
+
+        lines += ["", "===== End of Report ====="]
+
+        report = "\n".join(lines)
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(report)
+        print(f"  ✅ Report saved to '{filename}'.")
+        return report
 
     def save(self, filename=None):
         filename = filename or self.FILENAME
@@ -155,8 +221,6 @@ class FinanceManager:
             pass
         return fm
 
-    # ── Métodos privados del menú ──────────────────────────────
-
     def _print_menu(self):
         print("\n=====================================")
         print("    Personal Finance Manager")
@@ -167,7 +231,8 @@ class FinanceManager:
         print("4. Manage budgets")
         print("5. List transactions")
         print("6. Export to CSV")
-        print("7. Exit")
+        print("7. Generate report")
+        print("8. Exit")
 
     def _get_amount(self, prompt):
         while True:
@@ -259,6 +324,7 @@ class FinanceManager:
             "4": self._manage_budgets,
             "5": self._list_transactions,
             "6": self._export_csv,
+            "7": self.generate_report,
         }
 
         while True:
@@ -267,7 +333,7 @@ class FinanceManager:
 
             if option in actions:
                 actions[option]()
-            elif option == "7":
+            elif option == "8":
                 self.save()
                 print("💾 Data saved. Goodbye!")
                 break
@@ -275,6 +341,5 @@ class FinanceManager:
                 print("Invalid option.")
 
 
-# Punto de entrada
 fm = FinanceManager.load()
 fm.run()
